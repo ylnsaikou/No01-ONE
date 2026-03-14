@@ -1,0 +1,92 @@
+<!-- ================= 文件：faq.html ================= -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理学院 · 自助问答</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background-color: #f0f5fa; line-height: 1.6; color: #1e2b3c; padding: 0 16px 20px; }
+        .container { max-width: 1280px; margin: 0 auto; background-color: white; border-radius: 32px 32px 24px 24px; box-shadow: 0 15px 35px rgba(0, 30, 60, 0.1); padding: 0 24px 32px; }
+        .header { text-align: center; padding: 40px 20px 20px; background: linear-gradient(135deg, #eef5ff 0%, #ffffff 80%); border-bottom: 1px solid #d9e8f5; margin-bottom: 30px; }
+        .header h1 { font-size: 2.5rem; font-weight: 600; color: #0a2942; margin-bottom: 8px; }
+        .header h1 i { color: #2a6d9c; margin-right: 12px; }
+        .header p { font-size: 1.15rem; color: #2f5575; background: rgba(42, 109, 156, 0.06); display: inline-block; padding: 8px 28px; border-radius: 40px; }
+        .section-title { display: flex; align-items: center; gap: 12px; font-size: 1.9rem; font-weight: 600; color: #144a70; margin: 40px 0 24px 0; padding-bottom: 10px; border-bottom: 3px solid #c3dff5; }
+        .grid-card { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; margin-top: 8px; }
+        .card { background: white; border-radius: 24px; padding: 20px 20px 24px; box-shadow: 0 10px 20px rgba(0, 30, 60, 0.08); border: 1px solid rgba(185, 215, 240, 0.4); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px rgba(21, 80, 130, 0.12); }
+        .category-title { font-size: 1.5rem; font-weight: 600; color: #155a8a; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+        .qa-list { display: flex; flex-direction: column; gap: 18px; }
+        .qa-item { background: #f5faff; border-radius: 18px; padding: 14px 16px; border-left: 5px solid #4895d6; }
+        .qa-item:hover { background: #e3f0fd; }
+        .question { font-weight: 700; font-size: 1.05rem; color: #0a3957; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .answer { font-size: 0.95rem; color: #1f4460; padding-left: 28px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23367fb3" stroke-width="2"><path d="M20 12H4M12 4v16"/></svg>') left center no-repeat; background-size: 18px; line-height: 1.5; }
+        .footer { margin-top: 50px; padding: 20px 10px 10px; text-align: center; color: #5d7690; font-size: 0.95rem; border-top: 2px dashed #b7d3ea; }
+        .footer a { color: #1d5b8c; text-decoration: none; font-weight: 500; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.9rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-life-ring"></i> 理学院 · 自助问答</h1>
+        <p>常见问题分类 · 快速解答</p>
+    </div>
+
+    <div class="section-title">
+        <i class="fas fa-folder-open"></i>
+        <span>📋 问题分类 · 自助解答</span>
+    </div>
+    <div id="faqContainer" class="grid-card"></div>
+
+    <div class="footer">
+        <i class="fas fa-university"></i> 理学院学生会 · <a href="index.html">返回首页</a> &nbsp;|&nbsp; 自助问答
+    </div>
+</div>
+
+<script>
+    (function() {
+        const categories = [
+            { name: "📘 学业问题", icon: "fa-book-open", questions: [
+                { q: "如何申请缓考？", a: "联系教学秘书王老师（B101）领取缓考申请表，附证明材料（病历等），经任课教师签字后交至学院教务办公室。" },
+                { q: "怎样查询培养方案及选课？", a: "登录教务系统(edu.science.edu) → 培养管理 → 查看方案。选课期间请关注年级群通知。" },
+                { q: "成绩单打印/盖章流程", a: "自助打印机在理学院一楼大厅；需人工盖章请于周三下午带校园卡至A202李老师处办理。" }
+            ]},
+            { name: "🏠 生活服务", icon: "fa-utensils", questions: [
+                { q: "校园卡遗失怎么办？", a: "第一时间在微信公众号「理学微生活」挂失，或前往学生事务中心（理学院B区大厅）补办，工本费10元。" },
+                { q: "宿舍报修渠道", a: "通过企业微信→后勤报修，或直接联系宿管阿姨填写维修单。紧急水电问题拨打电话 010-12345679。" },
+                { q: "勤工助学岗位如何申请？", a: "关注学院官网学工板块，或直接咨询辅导员李老师（A202），每月发布岗位。" }
+            ]},
+            { name: "🎉 活动竞赛", icon: "fa-trophy", questions: [
+                { q: "数学建模/物理竞赛怎么报名？", a: "每年3-4月由学习部组织，关注公众号「理学竞赛」或各班学委通知。校赛获奖可获创新学分。" },
+                { q: "志愿者活动参与方式", a: "加入理学青协QQ群：12345678，活动每周发布。也可留意实践部展板（理学院二楼连廊）。" },
+                { q: "学生会举办的大型活动时间表", a: "迎新晚会（9月）、理学文化节（11月）、春季运动会（4月），具体见各部门宣传。" }
+            ]},
+            { name: "💼 毕业与就业", icon: "fa-briefcase", questions: [
+                { q: "毕业生推荐表如何办理？", a: "登录就业网填写信息，学院审核后至A309赵华老师处盖章。建议提前3个工作日申请。" },
+                { q: "三方协议遗失补办", a: "登报挂失 → 学院开具证明 → 就业指导中心补办。详情可咨询辅导员。" }
+            ]}
+        ];
+
+        function render() {
+            const container = document.getElementById('faqContainer');
+            if (!container) return;
+            let html = '';
+            categories.forEach(cat => {
+                let qaHtml = '';
+                cat.questions.forEach(qa => {
+                    qaHtml += `<div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> ${qa.q}</div><div class="answer">${qa.a}</div></div>`;
+                });
+                html += `<div class="card"><div class="category-title"><i class="fas ${cat.icon}"></i> ${cat.name}</div><div class="qa-list">${qaHtml}</div></div>`;
+            });
+            container.innerHTML = html;
+        }
+        window.addEventListener('DOMContentLoaded', render);
+    })();
+</script>
+</body>
+</html>

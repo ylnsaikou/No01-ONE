@@ -1,0 +1,79 @@
+<!-- ================= 文件：departments.html ================= -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理学院 · 部门职责</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background-color: #f0f5fa; line-height: 1.6; color: #1e2b3c; padding: 0 16px 20px; }
+        .container { max-width: 1280px; margin: 0 auto; background-color: white; border-radius: 32px 32px 24px 24px; box-shadow: 0 15px 35px rgba(0, 30, 60, 0.1); padding: 0 24px 32px; }
+        .header { text-align: center; padding: 40px 20px 20px; background: linear-gradient(135deg, #eef5ff 0%, #ffffff 80%); border-bottom: 1px solid #d9e8f5; margin-bottom: 30px; }
+        .header h1 { font-size: 2.5rem; font-weight: 600; color: #0a2942; margin-bottom: 8px; }
+        .header h1 i { color: #2a6d9c; margin-right: 12px; }
+        .header p { font-size: 1.15rem; color: #2f5575; background: rgba(42, 109, 156, 0.06); display: inline-block; padding: 8px 28px; border-radius: 40px; }
+        .section-title { display: flex; align-items: center; gap: 12px; font-size: 1.9rem; font-weight: 600; color: #144a70; margin: 40px 0 24px 0; padding-bottom: 10px; border-bottom: 3px solid #c3dff5; }
+        .grid-card { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 26px; margin-top: 8px; }
+        .card { background: white; border-radius: 24px; padding: 20px 20px 24px; box-shadow: 0 10px 20px rgba(0, 30, 60, 0.08); border: 1px solid rgba(185, 215, 240, 0.4); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px rgba(21, 80, 130, 0.12); }
+        .dept-name { font-size: 1.6rem; font-weight: 640; color: #003f66; margin-bottom: 8px; }
+        .dept-intro { font-style: italic; color: #26648b; background: #ebf4fb; padding: 10px 14px; border-radius: 24px; margin: 10px 0 18px; border: 1px dashed #9ec3e0; }
+        .duty-list { list-style: none; margin-top: 6px; }
+        .duty-list li { padding: 8px 0 8px 32px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="%231d5b8c"><circle cx="12" cy="12" r="6"/></svg>') left center no-repeat; background-size: 18px; border-bottom: 1px solid #dae9f5; color: #1f4c70; }
+        .duty-list li:last-child { border-bottom: none; }
+        .footer { margin-top: 50px; padding: 20px 10px 10px; text-align: center; color: #5d7690; font-size: 0.95rem; border-top: 2px dashed #b7d3ea; }
+        .footer a { color: #1d5b8c; text-decoration: none; font-weight: 500; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.9rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-users-cog"></i> 理学院 · 部门职责</h1>
+        <p>学生会各部门简介与详细职责</p>
+    </div>
+
+    <div class="section-title">
+        <i class="fas fa-sitemap"></i>
+        <span>⚙️ 部门职责与简介</span>
+    </div>
+    <div id="deptContainer" class="grid-card"></div>
+
+    <div class="footer">
+        <i class="fas fa-university"></i> 理学院学生会 · <a href="index.html">返回首页</a> &nbsp;|&nbsp; 部门专页
+    </div>
+</div>
+
+<script>
+    (function() {
+        const departments = [
+            { name: "宣传部", intro: "展示理学风采，传递第一手活动资讯。", duties: ["运营公众号、B站账号", "设计海报、展板、文创", "新闻采编与摄影记录", "活动现场布置与宣传"] },
+            { name: "组织部", intro: "夯实组织基础，凝聚青年力量。", duties: ["团日活动组织与评比", "团员发展、团费收缴", "学生干部培训与考核", "智慧团建系统维护"] },
+            { name: "学习部", intro: "营造浓厚学风，搭建师生桥梁。", duties: ["新生经验交流会", "学霸讲堂·朋辈辅导", "课堂考勤与学风检查", "竞赛信息汇总与报名"] },
+            { name: "文体部", intro: "活跃校园文化，点燃运动激情。", duties: ["策划迎新晚会、十佳歌手", "组织篮球赛、趣味运动会", "管理院队（篮足羽）", "开展周末舞会/艺术沙龙"] },
+            { name: "实践部", intro: "连接社会与校园，锻炼综合能力。", duties: ["统筹寒暑期社会实践", "对接志愿活动与基地", "开展企业参访、实习分享", "挑战杯/大创项目支持"] }
+        ];
+
+        function render() {
+            const container = document.getElementById('deptContainer');
+            if (!container) return;
+            let html = '';
+            departments.forEach(dept => {
+                let dutiesHtml = '';
+                dept.duties.forEach(d => { dutiesHtml += `<li>${d}</li>`; });
+                html += `<div class="card">
+                    <div class="dept-name"><i class="fas fa-sitemap" style="color: #1b6299;"></i> ${dept.name}</div>
+                    <div class="dept-intro"><i class="fas fa-quote-right"></i> ${dept.intro}</div>
+                    <ul class="duty-list">${dutiesHtml}</ul>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+        window.addEventListener('DOMContentLoaded', render);
+    })();
+</script>
+</body>
+</html>

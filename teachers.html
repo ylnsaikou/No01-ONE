@@ -1,0 +1,85 @@
+<!-- ================= 文件：teachers.html ================= -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理学院 · 教师信息</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background-color: #f0f5fa; line-height: 1.6; color: #1e2b3c; padding: 0 16px 20px; }
+        .container { max-width: 1280px; margin: 0 auto; background-color: white; border-radius: 32px 32px 24px 24px; box-shadow: 0 15px 35px rgba(0, 30, 60, 0.1); padding: 0 24px 32px; }
+        .header { text-align: center; padding: 40px 20px 20px; background: linear-gradient(135deg, #eef5ff 0%, #ffffff 80%); border-bottom: 1px solid #d9e8f5; margin-bottom: 30px; }
+        .header h1 { font-size: 2.5rem; font-weight: 600; color: #0a2942; margin-bottom: 8px; }
+        .header h1 i { color: #2a6d9c; margin-right: 12px; }
+        .header p { font-size: 1.15rem; color: #2f5575; background: rgba(42, 109, 156, 0.06); display: inline-block; padding: 8px 28px; border-radius: 40px; }
+        .section-title { display: flex; align-items: center; gap: 12px; font-size: 1.9rem; font-weight: 600; color: #144a70; margin: 40px 0 24px 0; padding-bottom: 10px; border-bottom: 3px solid #c3dff5; }
+        .grid-card { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; margin-top: 8px; }
+        .card { background: white; border-radius: 24px; padding: 20px 20px 24px; box-shadow: 0 10px 20px rgba(0, 30, 60, 0.08); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid rgba(185, 215, 240, 0.4); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px rgba(21, 80, 130, 0.12); border-color: #b4d3ee; }
+        .teacher-name { font-size: 1.65rem; font-weight: 650; color: #0e3d5e; margin-bottom: 6px; }
+        .teacher-title { font-size: 1rem; font-weight: 500; color: #1f6392; background: #e2effa; display: inline-block; padding: 4px 12px; border-radius: 30px; margin: 6px 0 10px; }
+        .teacher-bio { font-size: 0.95rem; color: #2e4b6b; background: #f4fafd; padding: 12px 14px; border-radius: 18px; margin: 12px 0 16px; border-left: 4px solid #79b9e2; }
+        .contact-info { margin-top: auto; display: flex; flex-direction: column; gap: 12px; background: #f7fcff; padding: 16px 14px; border-radius: 20px; }
+        .contact-item { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; color: #1b4b72; word-break: break-word; }
+        .contact-item i { width: 24px; color: #1565a0; font-size: 1.1rem; text-align: center; }
+        .contact-item a { color: #1b4b72; text-decoration: none; border-bottom: 1px dotted #8bb9da; }
+        .contact-item a:hover { color: #0a2d44; border-bottom: 1px solid; }
+        .footer { margin-top: 50px; padding: 20px 10px 10px; text-align: center; color: #5d7690; font-size: 0.95rem; border-top: 2px dashed #b7d3ea; }
+        .footer a { color: #1d5b8c; text-decoration: none; font-weight: 500; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.9rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-chalkboard-teacher"></i> 理学院 · 教师信息</h1>
+        <p>简介 | 办公室 | 电话 | 邮箱</p>
+    </div>
+
+    <div class="section-title">
+        <i class="fas fa-user-graduate"></i>
+        <span>👩‍🏫 指导老师与辅导员</span>
+    </div>
+    <div id="facultyContainer" class="grid-card"></div>
+
+    <div class="footer">
+        <i class="fas fa-university"></i> 理学院学生会 · <a href="index.html">返回首页</a> &nbsp;|&nbsp; 教师专页
+    </div>
+</div>
+
+<script>
+    (function() {
+        const teachers = [
+            { name: "张伟", title: "分团委书记", bio: "全面负责学生会指导工作，分管组织部、宣传部，长期从事学生思想引领工作。", office: "理学院A201", phone: "010-12345678", email: "zhang.wei@science.edu" },
+            { name: "李芳", title: "辅导员 (2023级)", bio: "负责学业预警、心理辅导及日常管理，温和耐心，同学们喜爱的芳姐。", office: "理学院A202", phone: "010-87654321", email: "lifang@science.edu" },
+            { name: "王明", title: "教学秘书", bio: "负责课程安排、考试缓补考、成绩单盖章，教学相关疑问可以找他。", office: "理学院B101", phone: "010-11223344", email: "wangming@science.edu" },
+            { name: "陈静", title: "学生会指导老师", bio: "专项指导学生会大型活动、社会实践、志愿服务，经验丰富。", office: "理学院C303", phone: "010-44332211", email: "chenjing@science.edu" },
+            { name: "赵华", title: "研究生辅导员", bio: "负责研究生思政、学术文化及就业指导，办公室随时欢迎交流。", office: "理学院A309", phone: "010-55667788", email: "zhaohua@science.edu" }
+        ];
+
+        function render() {
+            const container = document.getElementById('facultyContainer');
+            if (!container) return;
+            let html = '';
+            teachers.forEach(t => {
+                html += `<div class="card">
+                    <div class="teacher-name">${t.name}</div>
+                    <div class="teacher-title"><i class="fas fa-tag"></i> ${t.title}</div>
+                    <div class="teacher-bio"><i class="fas fa-quote-left" style="opacity:0.6;"></i> ${t.bio}</div>
+                    <div class="contact-info">
+                        <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>办公室：${t.office}</span></div>
+                        <div class="contact-item"><i class="fas fa-phone-alt"></i> <span>电话：<a href="tel:${t.phone}">${t.phone}</a></span></div>
+                        <div class="contact-item"><i class="fas fa-envelope"></i> <span>邮箱：<a href="mailto:${t.email}">${t.email}</a></span></div>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+        window.addEventListener('DOMContentLoaded', render);
+    })();
+</script>
+</body>
+</html>

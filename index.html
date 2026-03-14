@@ -1,43 +1,182 @@
+<!-- ================= 文件：index.html ================= -->
 <!DOCTYPE html>
 <html lang="zh-CN">
-	<head>
-		<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1"/>
-			<title>一个普通的静态网站</title>
-			<style>
-				body {
-					margin: 0;
-				}
-			</style>
-		</head>
-		<body>
-			<div style="
-				background-color: #f1f1f1;
-				text-align: center;
-				padding: 40px;
-				">
-				<img src='https://news.hbut.edu.cn/virtual_attach_file.vsb?afc=xLRQJVL8VfLzTfU04Cin7r7Um74M4-a4MlVRLRUiLzlbL4L0gihFp2hmCIa0L1hkoSy4UYysUNCiM4WfnRfRLzGDLz9DU8-PolMfMlliU4AFoR7Po7-YL7QFM4-YLN7sgtXaQ4Oeo4xZ6s6ZgDTJQty0LzG4M1yPoz74L1bw62P8c&oid=2023193082&tid=1036&nid=19132&e=.jpg' alt="康文昌" width="1052px" height="768px">
-			</div>
-			<div style="
-				max-width: 1200px;
-				margin: 30px auto;
-				padding: 15px;
-				line-height: 1.7;
-				color: rgb(121, 150, 78);
-				">
-			<p>我的网站</p>
-			<p>什么都没有证明</p>
-			<p>除了</p>
-			<p>点进这里的你一定是一个天才</p>
-			</div>
-			<div style="
-				background-color: #f1f1f1;
-				text-align: center;
-				padding: 40px;
-				font-size: 12px;
-				">
-			<p>我的网站</p>
-			<a href="https://www.hbut.edu.cn/">友情链接</a>
-			</div>
-		</body>
-	</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理学院学生会 · 功能大厅</title>
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background-color: #f0f5fa;
+            line-height: 1.6;
+            color: #1e2b3c;
+            padding: 0 16px 20px;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 32px 32px 24px 24px;
+            box-shadow: 0 15px 35px rgba(0, 30, 60, 0.1);
+            padding: 0 24px 32px;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: linear-gradient(135deg, #eef5ff 0%, #ffffff 80%);
+            border-bottom: 1px solid #d9e8f5;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #0a2942;
+            margin-bottom: 8px;
+        }
+        .header h1 i {
+            color: #2a6d9c;
+            margin-right: 12px;
+        }
+        .header p {
+            font-size: 1.15rem;
+            color: #2f5575;
+            background: rgba(42, 109, 156, 0.06);
+            display: inline-block;
+            padding: 8px 28px;
+            border-radius: 40px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #144a70;
+            margin: 30px 0 24px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c3dff5;
+        }
+        .grid-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 26px;
+            margin-top: 8px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px 20px 30px;
+            box-shadow: 0 10px 20px rgba(0, 30, 60, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(185, 215, 240, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(21, 80, 130, 0.12);
+            border-color: #b4d3ee;
+        }
+        .card-icon {
+            font-size: 3.5rem;
+            color: #1d5b8c;
+            margin-bottom: 16px;
+        }
+        .card h3 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #0e3d5e;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #2f5575;
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+            flex: 1;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #1d5b8c;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 16px rgba(25, 85, 130, 0.2);
+        }
+        .btn i {
+            margin-left: 8px;
+        }
+        .btn:hover {
+            background-color: #0f4168;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px 10px 10px;
+            text-align: center;
+            color: #5d7690;
+            font-size: 0.95rem;
+            border-top: 2px dashed #b7d3ea;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .card h3 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-cubes"></i> 理学院学生会 · 功能大厅</h1>
+        <p><i class="fas fa-compass"></i> 请选择需要访问的服务板块</p>
+    </div>
+
+    <div class="section-title">
+        <i class="fas fa-list-ul"></i>
+        <span>📌 快速导航</span>
+    </div>
+
+    <div class="grid-card">
+        <!-- 教师信息卡片 -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+            <h3>教师信息</h3>
+            <p>查看理学院各位老师的简介、办公室电话及邮箱</p>
+            <a href="teachers.html" class="btn">进入 <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <!-- 问题自助解答卡片 -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-life-ring"></i></div>
+            <h3>自助问答</h3>
+            <p>学业、生活、竞赛等常见问题分类自助解答</p>
+            <a href="faq.html" class="btn">进入 <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <!-- 部门职责卡片 -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-users-cog"></i></div>
+            <h3>部门职责</h3>
+            <p>了解学生会各部门的简介与详细职责</p>
+            <a href="departments.html" class="btn">进入 <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <i class="fas fa-university"></i> 理学院学生会 · 信息平台  |  首页仅提供导航  |  数据更新于 2026.03
+    </div>
+</div>
+</body>
+</html>
